@@ -1,0 +1,98 @@
+.StepperWrapper {
+    // TODO style the element
+    margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+    padding-left: 50px;
+    background:var(--breadcrumbs-background);
+}
+
+.StepperItem{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+}
+
+.StepperItem::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+  }
+
+  .StepperItem::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid;
+    border-color: #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+  }
+
+.Active {
+    font-weight: bold;
+  }
+
+.Active::before{
+    border-bottom: 2px solid;
+    border-color: var(--checkout-address-selected-color);
+}
+
+  .StepperItem .StepCounter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--checkout-address-selected-color) 50%, #ccc 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
+    margin-bottom: 6px;
+  }
+
+  .StepperItem.Active .StepCounter {
+    background-position: left bottom;
+  }
+
+  .StepperItem.Completed .StepCounter {
+    background-color: var(--checkout-address-selected-color);
+    background-position: left bottom;
+  }
+
+  .StepperItem.Completed::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid;
+    border-color: var(--checkout-address-selected-color);
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 3;
+  }
+  .StepperItem.Completed::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid;
+    border-color: var(--checkout-address-selected-color);
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 3;
+  }
+//var(--checkout-address-selected-color);
